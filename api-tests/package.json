@@ -1,0 +1,25 @@
+{
+  "name": "api-tests",
+  "version": "1.0.0",
+  "description": "Otus API Http Request Tests",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --passWithNoTests --detectOpenHandles --verbose",
+    "user": "node init.js"
+  },
+  "author": "Flávia Pereira",
+  "license": "ISC",
+  "dependencies": {
+    "custom-env": "^2.0.1",
+    "fs": "0.0.1-security",
+    "jest": "^25.1.0",
+    "readline-sync": "^1.4.10",
+    "request-promise": "^4.2.5"
+  },
+  "devDependencies": {
+    "babel-jest": "^24.8.0",
+    "jest-extended": "^0.11.2",
+    "jest-transform-stub": "^2.0.0",
+    "vue-jest": "^3.0.4"
+  }
+}

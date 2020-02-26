@@ -1,0 +1,6 @@
+# directories
+.idea/*
+node_modules/*
+# files
+data/login_data.json
+package-lock.json
