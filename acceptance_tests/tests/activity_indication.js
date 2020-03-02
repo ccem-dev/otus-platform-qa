@@ -63,29 +63,58 @@ suiteArray = [
             var mdIcon = await pageOtus.page.$$("md-icon[ng-click='$ctrl.clear(item)']");
             await mdIcon[0].click();
             await pageOtus.waitForMilliseconds(2000);
-            await pageOtus.clickWithWait("button[aria-label='Usuário Solicitante']");
+            await pageOtus.clickWithWait("button[aria-label='Sigla do Formulário']");
             await pageOtus.waitForMilliseconds(2000);
-            await pageOtus.typeWithWait("input[ng-class='::inputClass']", "carol");
+            await pageOtus.typeWithWait("input[ng-model='$ctrl.searchSettings.filter[item.title]']", "FRC");
+            await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.clickWithWait("button[aria-label='Solicitante']");
+            await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.typeWithWait("input[placeholder='Solicitante']", "carol");
             await pageOtus.waitForMilliseconds(2000);
             await pageOtus.clickWithWait("li[ng-click='$mdAutocompleteCtrl.select($index)']");
             await pageOtus.waitForMilliseconds(2000);
-            await pageOtus.clickWithWait("button[ng-click='$mdAutocompleteCtrl.clear($event)']");
+            await pageOtus.clickWithWait("button[aria-label='ID Externo']");
             await pageOtus.waitForMilliseconds(2000);
-            await pageOtus.clickWithWait("button[aria-label='Revisor Responsável']");
+            await pageOtus.typeWithWait("input[aria-label='ID Externo']", "123");
             await pageOtus.waitForMilliseconds(2000);
-            await pageOtus.clickWithWait("button[aria-label='Revisor Responsável']");
+            await pageOtus.clickWithWait("button[aria-label='Responsável']");
             await pageOtus.waitForMilliseconds(2000);
-            await pageOtus.typeWithWait("input[placeholder='Revisor Responsável']", "bruce");
+            await pageOtus.typeWithWait("input[aria-label='Responsável']", "diogo");
             await pageOtus.waitForMilliseconds(2000);
-            var mdVirtualRepeatContainer2 = await pageOtus.page.$$("md-virtual-repeat-container[ng-hide='$mdAutocompleteCtrl.hidden']");
-            await mdVirtualRepeatContainer2[1].click();
-            await pageOtus.waitForMilliseconds(2000);
-            await pageOtus.clickWithWait("button[ aria-label='Sigla do Formulário']");
-            await pageOtus.waitForMilliseconds(2000);
-            await pageOtus.typeWithWait("input[aria-label='Sigla do Formulário']", "FRC");
+            await pageOtus.clickWithWait("li[aria-setsize='2']");
             await pageOtus.waitForMilliseconds(2000);
             await pageOtus.clickWithWait("button[aria-label='Data de Vencimento']");
             await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.clickWithWait("button[ng-click='ctrl.openCalendarPane($event)']");
+            await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.clickWithWait("td[aria-label='Wednesday March 11 2020']");
+            await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.clickWithWait("button[ ng-click='$ctrl.getPendencies($ctrl.searchSettings)']");
+            await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.clickWithWait("md-switch[aria-label='ActivityType']");
+            await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.clickWithWait("md-radio-button[value='FINALIZED']");
+            await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.clickWithWait("md-radio-button[value='ALL']");
+            await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.clickWithWait("button[ aria-label='critérios de ordernação']");
+            await pageOtus.waitForMilliseconds(2000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
