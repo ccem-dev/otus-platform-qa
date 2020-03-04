@@ -61,6 +61,12 @@ suiteArray = [
             await pageOtus.waitForMilliseconds(2000);// espera 2 segundos
             await pageOtus.clickWithWait("button[ ng-click='$ctrl.getPendencies($ctrl.searchSettings)']");
             await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.typeWithWait("input[ ng-model='$ctrl.stuntmanSearchSettings.currentQuantity']", "1");
+            await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.typeWithWait("input[ng-model='$ctrl.stuntmanSearchSettings.quantityToGet']", "2");
+            await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.clickWithWait("button[ng-click='$ctrl.getNextPage($ctrl.stuntmanSearchSettings)']");
+            await pageOtus.waitForMilliseconds(2000);
             await pageOtus.clickWithWait("md-switch[aria-label='ActivityType']");
             await pageOtus.waitForMilliseconds(2000);
             await pageOtus.clickWithWait("md-radio-button[value='FINALIZED']");
@@ -87,6 +93,12 @@ suiteArray = [
             await pageOtus.typeWithWait("input[ng-model='$ctrl.searchSettings.filter[item.title]']", "FRC");
             await pageOtus.waitForMilliseconds(2000);
             await pageOtus.clickWithWait("button[ ng-click='$ctrl.getPendencies($ctrl.searchSettings)']");
+            await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.typeWithWait("input[ ng-model='$ctrl.stuntmanSearchSettings.currentQuantity']", "3");
+            await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.typeWithWait("input[ng-model='$ctrl.stuntmanSearchSettings.quantityToGet']", "4");
+            await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.clickWithWait("button[ng-click='$ctrl.getNextPage($ctrl.stuntmanSearchSettings)']");
             await pageOtus.waitForMilliseconds(2000);
             await pageOtus.clickWithWait("md-switch[aria-label='ActivityType']");
             await pageOtus.waitForMilliseconds(2000);
@@ -117,6 +129,12 @@ suiteArray = [
             await pageOtus.waitForMilliseconds(2000);
             await pageOtus.clickWithWait("button[ ng-click='$ctrl.getPendencies($ctrl.searchSettings)']");
             await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.typeWithWait("input[ ng-model='$ctrl.stuntmanSearchSettings.currentQuantity']", "5");
+            await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.typeWithWait("input[ng-model='$ctrl.stuntmanSearchSettings.quantityToGet']", "6");
+            await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.clickWithWait("button[ng-click='$ctrl.getNextPage($ctrl.stuntmanSearchSettings)']");
+            await pageOtus.waitForMilliseconds(2000);
             await pageOtus.clickWithWait("md-switch[aria-label='ActivityType']");
             await pageOtus.waitForMilliseconds(2000);
             await pageOtus.clickWithWait("md-radio-button[value='FINALIZED']");
@@ -144,6 +162,12 @@ suiteArray = [
             await pageOtus.typeWithWait("input[aria-label='ID Externo']", "123");
             await pageOtus.waitForMilliseconds(2000);
             await pageOtus.clickWithWait("button[ ng-click='$ctrl.getPendencies($ctrl.searchSettings)']");
+            await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.typeWithWait("input[ ng-model='$ctrl.stuntmanSearchSettings.currentQuantity']", "7");
+            await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.typeWithWait("input[ng-model='$ctrl.stuntmanSearchSettings.quantityToGet']", "8");
+            await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.clickWithWait("button[ng-click='$ctrl.getNextPage($ctrl.stuntmanSearchSettings)']");
             await pageOtus.waitForMilliseconds(2000);
             await pageOtus.clickWithWait("md-switch[aria-label='ActivityType']");
             await pageOtus.waitForMilliseconds(2000);
@@ -174,6 +198,12 @@ suiteArray = [
             await pageOtus.waitForMilliseconds(2000);
             await pageOtus.clickWithWait("button[ ng-click='$ctrl.getPendencies($ctrl.searchSettings)']");
             await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.typeWithWait("input[ ng-model='$ctrl.stuntmanSearchSettings.currentQuantity']", "9");
+            await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.typeWithWait("input[ng-model='$ctrl.stuntmanSearchSettings.quantityToGet']", "1");
+            await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.clickWithWait("button[ng-click='$ctrl.getNextPage($ctrl.stuntmanSearchSettings)']");
+            await pageOtus.waitForMilliseconds(2000);
             await pageOtus.clickWithWait("md-switch[aria-label='ActivityType']");
             await pageOtus.waitForMilliseconds(2000);
             await pageOtus.clickWithWait("md-radio-button[value='FINALIZED']");
@@ -203,6 +233,12 @@ suiteArray = [
             await pageOtus.waitForMilliseconds(2000);
             await pageOtus.clickWithWait("button[ ng-click='$ctrl.getPendencies($ctrl.searchSettings)']");
             await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.typeWithWait("input[ ng-model='$ctrl.stuntmanSearchSettings.currentQuantity']", "3");
+            await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.typeWithWait("input[ng-model='$ctrl.stuntmanSearchSettings.quantityToGet']", "2");
+            await pageOtus.waitForMilliseconds(2000);
+            await pageOtus.clickWithWait("button[ng-click='$ctrl.getNextPage($ctrl.stuntmanSearchSettings)']");
+            await pageOtus.waitForMilliseconds(2000);
             await pageOtus.clickWithWait("md-switch[aria-label='ActivityType']");
             await pageOtus.waitForMilliseconds(2000);
             await pageOtus.clickWithWait("md-radio-button[value='FINALIZED']");
@@ -215,6 +251,8 @@ suiteArray = [
             await pageOtus.waitForMilliseconds(2000);
             await pageOtus.clickWithWait("button[ng-click='$ctrl.home()']");
             await pageOtus.waitForMilliseconds(2000);
+
+
 
         });
 
