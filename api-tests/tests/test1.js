@@ -32,7 +32,7 @@ describe('Suite 1', () => {
     const quantityToGet = 10;
 
     function getFilterRequestFixedData() {
-        const reqData = requestHelper.getRequestFixedData(token, URL, "POST");
+        const reqData = requestHelper.mountRequestData(token, URL, "POST");
         reqData.body = {
             "currentQuantity": currentQuantity,
             "quantityToGet": quantityToGet,
@@ -60,7 +60,7 @@ describe('Suite 1', () => {
         reqData.body.filter = {
             "receiver": [receiver]
         };
-        const pendencyList = await requestHelper.sendRequestAndGetData(reqData);
+        const pendencyList = await requestHelper.sendRequestAndGetResponseData(reqData);
         //console.log(pendencyList);
         checkPendencyList(pendencyList, expectedIds);
         for (let pendency of pendencyList) {
@@ -88,7 +88,7 @@ describe('Suite 1', () => {
             "requester": [requester]
         };
 
-        const pendencyList = await requestHelper.sendRequestAndGetData(reqData);
+        const pendencyList = await requestHelper.sendRequestAndGetResponseData(reqData);
         //console.log(pendencyList);
         checkPendencyList(pendencyList, expectedIds);
         for (let pendency of pendencyList) {

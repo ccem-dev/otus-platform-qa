@@ -1,7 +1,7 @@
 const request = require('request-promise');
 const authentication = require("../code/authentication");
 
-async function sendRequestAndGetData(reqData){
+async function sendRequestAndGetResponseData(reqData){
     let result = {};
     await request(reqData, function (error, response) {
         if(error) throw error;
@@ -17,11 +17,11 @@ async function sendRequestAndGetData(reqData){
 }
 
 async function getToken(){
-    const data = await sendRequestAndGetData(authentication.getData());
+    const data = await sendRequestAndGetResponseData(authentication.getData());
     return data.token;
 }
 
-function getRequestFixedData(token, url, method){
+function mountRequestData(token, url, method, body={}){
     return {
         url: url,
         method: method,
@@ -30,12 +30,12 @@ function getRequestFixedData(token, url, method){
             "Authorization": "Bearer " + token
         },
         json: true,
-        body: {}
+        body: body
     };
 }
 
 module.exports = {
-    sendRequestAndGetData: sendRequestAndGetData,
+    sendRequestAndGetResponseData: sendRequestAndGetResponseData,
     getToken: getToken,
-    getRequestFixedData: getRequestFixedData
+    mountRequestData: mountRequestData
 };
