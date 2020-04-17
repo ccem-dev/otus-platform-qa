@@ -6,13 +6,18 @@ async function sendRequestAndGetResponseData(reqData){
     await request(reqData, function (error, response) {
         if(error) throw error;
         if(!response){
-            throw 'Null/undefined response';
+            result.error = new Error('Null/undefined response');
+            return;
         }
         if(response.statusCode !== 200){
-            throw `Status code ${response.statusCode}`;
+            result.error = new Error(`Status code ${response.statusCode}`);
+            return;
         }
         result['value'] = response.body.data;
     });
+    if(result.error){
+        throw result.error;
+    }
     return result.value;
 }
 
