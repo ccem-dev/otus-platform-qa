@@ -3,9 +3,8 @@ const requestHelper = require("../code/requestHelper");
 let token;
 
 beforeAll(async() => {
-    token = await requestHelper.getToken();
-    expect(token).not.toBeNull();
-    expect(token.length).toBeGreaterThan(0);
+    await requestHelper.setToken();
+    expect(requestHelper.hasToken()).toBeTrue();
 });
 
 //*************************************************
@@ -88,7 +87,7 @@ describe('Suite 1', () => {
             "requester": [requester]
         };
 
-        const pendencyList = await requestHelper.sendRequestAndGetResponseData(reqData);
+        const pendencyList = await requestHelper.sendAPIRequestAndGetResponseData(reqData);
         //console.log(pendencyList);
         checkPendencyList(pendencyList, expectedIds);
         for (let pendency of pendencyList) {

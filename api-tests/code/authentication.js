@@ -4,23 +4,23 @@ require('custom-env').env('staging');
 let EMAIL, PASSWORD;
 let loaded = false;
 
-function readData(){
+function _readData(){
     const data = JSON.parse(fs.readFileSync(process.cwd() + process.env.AUTHENTICATION_DATA_LOCAL_FILE_PATH));
     EMAIL = data.email;
     PASSWORD = data.password;
     loaded = true;
 }
 
-function getData(){
+function getRequestData(){
     if(!loaded){
-        readData();
+        _readData();
     }
     return {
         url: 'http://localhost:51002/otus-rest/v01/authentication',
         method: "POST",
-        // header: {
-        //     "Content-Type": "application/x-www-form-urlencoded",
-        // },
+        headers: {
+            "Content-Type": "application/json"
+        },
         json: true,
         body: {
             email: EMAIL,
@@ -30,5 +30,5 @@ function getData(){
 }
 
 module.exports = {
-    getData: getData
+    getRequestData: getRequestData
 };

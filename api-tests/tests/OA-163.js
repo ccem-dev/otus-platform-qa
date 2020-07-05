@@ -1,11 +1,8 @@
 const requestHelper = require("../code/requestHelper");
 
-let token;
-
 beforeAll(async() => {
-    token = await requestHelper.getToken();
-    expect(token).not.toBeNull();
-    expect(token.length).toBeGreaterThan(0);
+    await requestHelper.setToken();
+    expect(requestHelper.hasToken()).toBeTrue();
 });
 
 //*************************************************
@@ -150,23 +147,20 @@ function mountContact(numEmails, numAddresses, numPhoneNumbers){
 
 async function createParticipantContact(numEmails, numAddresses, numPhoneNumbers){
     participantContact = mountContact(numEmails, numAddresses, numPhoneNumbers);
-    const reqData = requestHelper.mountRequestData(token, URL, "POST", participantContact);
-    const createdParticipantContactId = await requestHelper.sendRequestAndGetResponseData(reqData);
+    const createdParticipantContactId = await requestHelper.sendAPIRequestAndGetResponseData(URL, "POST", participantContact);
     expect(createdParticipantContactId).toBeString();
     console.log("Participant contact CREATED: _id = " + createdParticipantContactId);
     return createdParticipantContactId;
 }
 
 async function deleteParticipantContact(participantContactId){
-    const reqData = requestHelper.mountRequestData(token, URL+participantContactId, "DELETE");
-    const response = await requestHelper.sendRequestAndGetResponseData(reqData);
+    const response = await requestHelper.sendAPIRequestAndGetResponseData(URL+participantContactId, "DELETE");
     expect(response).toBeTrue();
     console.log("Participant contact DELETED: _id = " + participantContactId);
 }
 
 async function requestParticipantContact(){
-    const reqData = requestHelper.mountRequestData(token, URL+participantContactId, "GET");
-    return await requestHelper.sendRequestAndGetResponseData(reqData);
+    return await requestHelper.sendAPIRequestAndGetResponseData( URL+participantContactId, "GET");
 }
 
 function checkValue(gettedParticipantContact, expectedParticipantContact, contactType, position){
@@ -248,8 +242,7 @@ describe('Get Methods Suite', () => {
     });
 
     test("Get by RN Method", async() => {
-        const reqData = requestHelper.mountRequestData(token, URL+"rn/"+RN, "GET");
-        const gettedParticipantContact = await requestHelper.sendRequestAndGetResponseData(reqData);
+        const gettedParticipantContact = await requestHelper.sendAPIRequestAndGetResponseData(URL+"rn/"+RN, "GET");
         expect(gettedParticipantContact).not.toBeNull();
         checkValue(gettedParticipantContact, participantContact, CONTACT_TYPES.EMAIL, POSITIONS.MAIN);
     });
@@ -270,9 +263,9 @@ describe("Edition Methods Suite", () => {
             participantContactId = await createParticipantContact(5,5,5);
             const participantContactItem = data[contactType][6];
 
-            const reqData = requestHelper.mountRequestData(token, URL+"update/"+urlSuffix, "PUT",
+            const response = await requestHelper.sendAPIRequestAndGetResponseData(
+                URL+"update/"+urlSuffix, "PUT",
                 mountDto(participantContactId, position, participantContactItem));
-            const response = await requestHelper.sendRequestAndGetResponseData(reqData);
             expect(response).toBeTrue();
 
             const prevArraySize = Object.keys(participantContact[contactType]).length;
@@ -385,10 +378,10 @@ describe("Edition Methods Suite", () => {
             const participantContactItem = data[contactType][numContacts+1];
 
             const prevArraySize = Object.keys(participantContact[contactType]).length;
-            const reqData = requestHelper.mountRequestData(token, URL+"add-non-main/"+urlSuffix, "PUT",
-                mountDto(participantContactId, position, participantContactItem));
 
-            const response = await requestHelper.sendRequestAndGetResponseData(reqData);
+            const response = await requestHelper.sendAPIRequestAndGetResponseData(
+                URL+"add-non-main/"+urlSuffix, "PUT",
+                mountDto(participantContactId, position, participantContactItem));
             expect(response).toBeTrue();
             // console.log(JSON.stringify(response, null, 2));//.
 
@@ -510,9 +503,9 @@ describe("Edition Methods Suite", () => {
         async function deleteNonMainContact(contactType, position){
             participantContactId = await createParticipantContact(5, 5, 5);
 
-            const reqData = requestHelper.mountRequestData(token, URL+"delete-non-main", "POST",
+            const response = await requestHelper.sendAPIRequestAndGetResponseData(
+                URL+"delete-non-main", "POST",
                 mountDto(participantContactId, position, undefined, contactType));
-            const response = await requestHelper.sendRequestAndGetResponseData(reqData);
             expect(response).toBeTrue();
 
             const prevArraySize = Object.keys(participantContact[contactType]).length;
